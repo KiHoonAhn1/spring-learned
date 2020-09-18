@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.SearchMapper">
+	
+	<select id="search" parameterType="String" 
+	resultType="user">
+		<![CDATA[SELECT * FROM USERS WHERE NAME LIKE '%'||#{obj}||'%']]>
+	</select>
+	<select id="search" parameterType="Integer" 
+	resultType="item">
+		<![CDATA[SELECT * FROM ITEMS WHERE #{obj1} <= PRICE <= #{obj2}]]>	
+	</select>	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

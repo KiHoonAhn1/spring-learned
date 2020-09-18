@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org/DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+ <settings>
+  <setting name="jdbcTypeForNull" value="NULL"/>
+ </settings>
+
+
+	<typeAliases>
+		<typeAlias type="com.vo.AdminVO" alias="admin"/>
+		<typeAlias type="com.vo.CartVO" alias="cart"/>
+	     <typeAlias type="com.vo.CustomerVO" alias="customer"/>
+	     <typeAlias type="com.vo.MenuVO" alias="menu"/>
+	      <typeAlias type="com.vo.OrderListVO" alias="orderlist"/>
+	       <typeAlias type="com.vo.OrdersVO" alias="orders"/>
+	       <typeAlias type="com.vo.ContactVO" alias="contact"/>
+	</typeAliases>
+	
+	<mappers>
+		<mapper resource="com/mybatis/adminmapper.xml"/>
+		<mapper resource="com/mybatis/cartmapper.xml"/>
+		<mapper resource="com/mybatis/customermapper.xml"/>
+		<mapper resource="com/mybatis/menumapper.xml"/>
+		<mapper resource="com/mybatis/orderlistmapper.xml"/>
+		<mapper resource="com/mybatis/ordersmapper.xml"/>
+		<mapper resource="com/mybatis/contactmapper.xml"/>
+	</mappers>
+</configuration>	
+	
+
+
+
+
+
+

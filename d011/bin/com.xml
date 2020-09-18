@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+
+	<bean name="ubiz" class="com.component.UserBiz" lazy-init="true" scope="prototype"/> 
+	<!-- lazy-init => 사용될 때 constructer 생성 
+		  scope="prototype" => 요청할때마다 생성/ scope="singleton" => 하나만 나오게 함 -->
+	<bean name="ibiz" class="com.component.ItemBiz"/>
+
+</beans>
+
+
+

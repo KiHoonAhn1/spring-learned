@@ -1,0 +1,400 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d9207b223b28cb025b05ab67d491c52f"></script>
+<style>
+body{
+	background-image:url('img/back.jpg');
+}
+#product{
+	width:800px;
+	height:200px;
+	border:5px solid black;
+}
+#product > div{
+	width:154px;
+	height:194px;
+	border:3px dotted black;
+	float:left;
+	font-size:130%;
+	line-height:15px;
+	text-align:center;
+	background:red;
+	color:yellow;
+	font-weight:bold;
+
+}
+#product > div > img{
+	width:100px;
+	height:80px;
+}
+#cart{
+	width:800px;
+	height:300px;
+	border:2px solid red;
+	overflow:auto;
+	background:white;
+}
+#cart > img {
+	width:30px;
+	height:30px;
+}
+#main{
+	width:250px;
+	height:40px;
+	margin:8px;
+	background:red;
+	color:yellow;
+	font-weight:bold;
+}
+#side{
+	width:250px;
+	height:40px;
+	margin:10px;
+	background:brown;
+	color:white;
+	font-weight:bold;
+}
+#Bvg{
+	width:250px;
+	height:40px;
+	margin:8px;
+	background:orange;
+	color:brown;
+	font-weight:bold;
+}
+#charge{
+	width:100px;
+	height:40px;
+	margin:30px;
+}
+#cancel{
+	width:100px;
+	height:40px;
+}
+#admin{
+	width:100px;
+	height:40px;
+	margin:0 400px 0;
+}
+#location{
+}
+#loc{
+}
+#map{
+	width:600px;
+	height:600px;
+	border:2px solid yellow;
+	margin:0 100px 0;
+}
+#seoul{	
+	width:100px;
+	height:40px;
+	margin:10px;
+}
+#busan{	
+	width:100px;
+	height:40px;
+	margin:10px;
+}
+#weather{
+	font-size: 130%;
+	font-weight:bold;
+}
+</style>
+<script>
+var map = null;
+var store = null;
+var arrs = null;
+var products = null;
+var sum = 0;
+var result1= 0;
+
+function displayWeather(data){
+	var items = $(data).find('item');
+	$(items).each(function(index,d){
+		console.log(index+' '+d);
+		/* var m = $(d).find('item').find('MinuteModel'); */
+		var category = $(d).find('category').text();
+		var fcstValue = $(d).find('fcstValue').text();
+		var baseDate = $(d).find('baseDate').text();
+		
+		var result='';
+		if(category == "T3H"){
+		result += ' 기온 : '+fcstValue;
+		$('#weather').append(result);
+		}
+		if(category == "REH"){
+		result += baseDate + ' 습도 : '+fcstValue+'%';
+		$('#weather').append(result);
+		}
+	});
+	
+}
+
+function getWeather(){
+	var urlstr = 'weathers';
+	$.ajax({
+		url:urlstr,
+		dataType:'xml',
+		success:function(data){
+			displayWeather(data);
+		},
+		error:function(){
+			alert('날씨');
+		}
+		
+	});
+};
+
+function open_admin(){
+	var newWindow=open("http://192.168.0.9/d06/admin.html");
+}
+
+function getMain(m){
+	$.ajax({
+		url:'getS',
+		async:false,
+		data:{cmd:m},
+		success: function(ja){
+			products = ja;
+			display(ja);
+		},
+		error: function(){
+			alert('Error.........');
+		}
+	});
+};
+
+function getSide(m){
+	$.ajax({
+		url:'getS',
+		async:false,
+		data:{cmd:m},
+		success: function(ja){
+			products = ja;
+			display(ja);
+		},
+		error: function(){
+			alert('Error.........');
+		}
+	});
+};
+
+function getBvg(m){
+	$.ajax({
+		url:'getS',
+		async:false,
+		data:{cmd:m},
+		success: function(ja){
+			products = ja;
+			display(ja);
+		},
+		error: function(){
+			alert('Error.........');
+		}
+	});
+};
+
+function display(datas){
+	$('#sum > span').text(sum);
+	$('#charges > span').text(result1);
+	$(datas).each(function(index,data){
+	var result = '';
+	result += '<div num="'+index+'">';
+	result += '<img src="img/'+data.img+'">'
+	result += '<p>'+data.name+'</p>'
+	result += '<p>'+data.stock+'</p>'
+	result += '<p>'+data.price+'</p>'
+	result += '</div>';
+	$('#product').append(result);
+	});
+};
+
+function sendData(d){
+	$.ajax({
+		url:'getS',
+		async:false,
+		data:{cmd:d},
+		success:function(result){
+			display(result);
+		},
+		error:function(){
+			alert('Error ... lol');
+		}
+	});
+};
+
+function cart(n){
+	var name = products[n].name;
+	var price = products[n].price;
+	var img = products[n].img;
+	var result = '';
+
+	result += '<img src = "img/'+img+'">';
+	result += '<tr>'+'<td>'+name+' </td>'+'<td>'+price+ '</td>'+'</tr>'+'<br>';
+	sum += price;
+	$('#sum > span').text(sum);
+	$('#cart').append(result);
+};
+
+$(document).ready(function(){
+	getMain(0);
+	mapDisplay();
+	
+	$('#product > div').click(function(){
+		var num = $(this).attr('num');
+		cart(num);
+	});
+	
+	$('#reset').click(function(){
+		$('#cart').empty();
+		 i = 0;
+		 });
+	$('#reset').click(function(){
+		$('#tot').empty();
+		 i = 0;
+		 sum = 0;
+		$('#sum > span').text(sum);
+		 });
+	$('#main').click(function(){
+		$('#product').empty();
+		i=0;
+		getMain(0);
+		$('#product > div').click(function(){
+			var num = $(this).attr('num');
+			cart(num);
+		});
+	});
+	$('#side').click(function(){
+		$('#product').empty();
+		i=0;
+		getSide(1);
+		$('#product > div').click(function(){
+			var num = $(this).attr('num');
+			cart(num);
+		});
+	});
+	$('#Bvg').click(function(){
+		$('#product').empty();
+		i=0;
+		getBvg(2);
+		$('#product > div').click(function(){
+			var num = $(this).attr('num');
+			cart(num);
+		});
+	});
+	$('#seoul').click(function(){
+		//seoul
+		panTo(37.508259, 127.058771,0);
+	});
+	$('#busan').click(function(){
+		//busan
+		panTo(35.154546, 129.061095,1);
+	});
+	
+	$('#charge').click(function(){
+		result1 = result1 + sum;
+		$('#charges > span').text(result1);
+		sum = 0;
+		$('#sum > span').text(sum);
+		$('#cart').empty();
+		i = 0;
+		var data = $('input[name="data"]').val();
+		if(data="불고기버거"){
+			item.stock=item.stock-1;
+			display();
+		}
+		/* sendData(data); */
+	});
+	
+	$('#cancel').click(function(){
+		sum = 0;
+		result1 = 0;
+		$('#cart').empty();
+		i = 0;
+		$('#sum > span').text(sum);
+		$('#charges > span').text(result1);
+		});
+	getWeather();
+});
+
+/*oooooooooooooooooooooooooo<MAP HTML>oooooooooooooooooooooooooo*/
+ 		function setMarkers(arrs){
+		
+		$(arrs).each(function(index,Store){
+		    var marker = new kakao.maps.Marker({
+		        title:Store.name,
+		    	position: new kakao.maps.LatLng(Store.lat, Store.lng)
+		    });
+		    marker.setMap(map);
+		    
+		     var iwContent = '<div style="padding:5px;"><a href="#">'+Store.name+'</a></div>', 
+		   iwRemoveable = true; 
+
+			var infowindow = new kakao.maps.InfoWindow({
+	    	content : iwContent,
+		    	removable : iwRemoveable
+			});
+
+			kakao.maps.event.addListener(marker, 'click', function() {
+		    infowindow.open(map, marker);  
+			}); 
+
+		});
+	};
+
+	function getData(loc){
+
+		$.ajax({
+			url:'store',
+			async:false,
+			data:{cmd:loc},
+			success:function(data){
+				arrs = data;
+			},
+			error:function(){
+				
+			}
+		});
+		return arrs;
+	};
+
+	function panTo(lat, lng, loc) {
+	    var moveLatLon = new kakao.maps.LatLng(lat, lng);
+	    map.panTo(moveLatLon);     
+	    var arrs = getData(loc);
+	    setMarkers(arrs);
+	};   
+
+	function mapDisplay(){
+		var container = document.getElementById('map');
+		var options = {
+			center: new kakao.maps.LatLng(37.549530, 126.989045),
+			level: 8
+		};
+		map = new kakao.maps.Map(container, options);
+	};	
+</script>
+</head>
+<body>
+<h1>POS SYSTEM</h1>
+<button id="main">Main_Menu</button>       
+<button id="side">Side_Menu</button>
+<button id="Bvg">Beverage</button>
+<div id = "product"></div>
+<h1 id="sum">total : <span id="tot"></span>
+</h1>
+<div id = "cart"></div>
+<button id="charge">Charge</button> <button id="cancel">Cancel</button> <input type=button value=관리자 id=admin onclick=open_admin()>
+<h1 id="charges">결제 금액 : <span></span></h1>
+<h3 id="weather"></h3>
+<h1> 매장 찾기 : <button id="seoul">Seoul</button><button id="busan">Busan</button></h1>
+
+<div id= "map"></div>
+
+</body>
+</html>

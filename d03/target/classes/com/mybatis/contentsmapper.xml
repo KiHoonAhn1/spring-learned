@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.ContentsDao">
+	
+<!-- 	<resultMap type="user" id="um">
+		<result property="identification" column="id"/>
+		<result property="password" column="pwd"/>
+		<result property="username" column="name"/>
+	</resultMap> -->
+	
+	
+	<insert id="insert" parameterType="contents">
+		INSERT INTO CONTENT VALUES (CSEQ.NEXTVAL,#{title},#{content},SYSDATE,0,#{author})	
+	</insert>
+	
+	<update id="update" parameterType="contents">
+		UPDATE CONTENT SET TITLE=#{title},CONTENT=#{content},AUTHOR=#{author} WHERE ID=#{id}
+	</update>
+	
+	<delete id="delete" parameterType="Integer">
+		DELETE FROM CONTENT WHERE ID=#{obj}
+	</delete>
+	
+	<select id="select" parameterType="Integer" 
+	resultType="contents">
+		(SELECT * FROM CONTENT WHERE ID=#{obj})
+	</select>
+	
+	<select id="selectall" resultType="contents">
+		SELECT * FROM CONTENT 
+	</select>
+	
+	<update id="setCnt" parameterType="java.util.HashMap">
+		UPDATE CONTENT SET CNT=CNT+1 WHERE ID=#{K}
+	</update>
+	
+	<select id="search" parameterType="java.util.HashMap" 
+	resultType="contents">
+	<![CDATA[
+	SELECT * FROM CONTENT WHERE CNT >=#{start} AND CNT <=#{end}
+	]]>
+	</select>
+	
+</mapper>
