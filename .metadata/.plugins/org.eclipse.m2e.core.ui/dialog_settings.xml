@@ -20,12 +20,16 @@
 	</section>
 	<section name="wizardPage">
 		<list key="groupId">
+			<item value="hive2"/>
+			<item value="hive"/>
 			<item value="p01"/>
 			<item value="d44"/>
 		</list>
 		<list key="name">
 		</list>
 		<list key="artifactId">
+			<item value="hive2"/>
+			<item value="hive"/>
 			<item value="p01"/>
 			<item value="d44"/>
 		</list>
