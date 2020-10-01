@@ -15,9 +15,17 @@
 </head>
 <body>
 <h1>Main Page</h1>
-<h3><a href="chart1.mc">Chart1</a></h3>
-<h3><a href="chart2.mc">Chart2</a></h3>
-<h3><a href="chart3.mc">Chart3</a></h3>
+
+<ul>
+	<li><a href="shop.mc?id=id01&item=it01&price=30000">오늘의 운세</a></li>
+	<li><a href="shop.mc?id=id02&item=it02&price=20000">주간 운세</a></li>
+	<li><a href="shop.mc?id=id03&item=it03&price=50000">내 정보</a></li>
+	<li><a href="shop.mc?id=id04&item=it04&price=10000">로그아웃</a></li>
+</ul>
+	
+<h3><a href="chart1.mc">주간 운세</a></h3>
+<h3><a href="chart2.mc">월간 운세</a></h3>
+<h3><a href="chart3.mc">.</a></h3>
 	<c:choose>
 		<c:when test="${centerpage == null}">
 			<jsp:include page="center.jsp"></jsp:include>

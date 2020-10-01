@@ -8,6 +8,11 @@
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="status"/>
+			<item value="getD"/>
+			<item value="send"/>
+			<item value="getLogger"/>
+			<item value="get"/>
 			<item value="alert"/>
 			<item value="res"/>
 			<item value="json"/>
@@ -18,11 +23,6 @@
 			<item value="it"/>
 			<item value="but"/>
 			<item value="결제"/>
-			<item value="결제하기"/>
-			<item value="bg"/>
-			<item value="nav"/>
-			<item value="anv"/>
-			<item value="내역"/>
 		</list>
 		<list key="replacehistory">
 		</list>

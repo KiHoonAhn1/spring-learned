@@ -1,2 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<typeInfoHistroy/>
+<typeInfoHistroy>
+<typeInfo handle="=hive/src=/optional=/true=/=/maven.pomderived=/true=/&lt;com.frame{Shop.java[Shop" modifiers="513" timestamp="1601258662506"/>
+<typeInfo handle="=hive/src=/optional=/true=/=/maven.pomderived=/true=/&lt;com.frame{Car.java[Car" modifiers="513" timestamp="1601270761120"/>
+<typeInfo handle="=hive/src=/optional=/true=/=/maven.pomderived=/true=/&lt;com.frame{Fortune.java[Fortune" modifiers="513" timestamp="1601384594946"/>
+</typeInfoHistroy>
