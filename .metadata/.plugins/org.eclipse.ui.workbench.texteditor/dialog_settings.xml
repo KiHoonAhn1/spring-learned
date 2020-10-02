@@ -8,6 +8,7 @@
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="anno"/>
 			<item value="status"/>
 			<item value="getD"/>
 			<item value="send"/>
@@ -22,7 +23,6 @@
 			<item value="menu"/>
 			<item value="it"/>
 			<item value="but"/>
-			<item value="결제"/>
 		</list>
 		<list key="replacehistory">
 		</list>

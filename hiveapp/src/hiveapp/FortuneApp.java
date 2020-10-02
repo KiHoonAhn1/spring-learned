@@ -17,16 +17,16 @@ public class FortuneApp {
 			Random r = new Random();
 			int lucky = r.nextInt(4);
 			if(lucky == 0) {
-				luck = "대흉";
+				luck = "Worst";
 			}else if(lucky==1) {
-				luck = "흉";
+				luck = "Bad";
 			}else if(lucky==2) {
-				luck = "길";
+				luck = "Good";
 			}else {
-				luck = "대길";
+				luck = "Best";
 			}
 			
-			FortuneToday fstatus = new FortuneToday("기훈", 27, "남", luck);
+			FortuneToday fstatus = new FortuneToday("Kihoon", 27, "Male", luck);
 			
 			try {
 				sendData(fstatus);
@@ -44,7 +44,7 @@ public class FortuneApp {
 	}
 	
 	public void sendData(FortuneToday ft) throws Exception {
-				url = "http://192.168.0.222/hive/fortunetoday.mc";
+				url = "http://192.168.32.1/hive/fortunetoday.mc";
 				url += "?name="+ft.getName()+"&age="+ft.getAge()+"&gender="+ft.getGender()+
 						"&luck="+ft.getLuck();
 				System.out.println(url);

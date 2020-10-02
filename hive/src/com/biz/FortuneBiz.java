@@ -1,7 +1,9 @@
 package com.biz;
 
-import com.frame.Fortune;
+import org.springframework.stereotype.Service;
 
+import com.frame.Fortune;
+@Service
 public class FortuneBiz implements Fortune<FortuneToday> {
 
 	@Override

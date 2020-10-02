@@ -34,7 +34,7 @@ public class App {
 	}
 	
 	public void sendData(CarStatus cs) throws Exception {
-				url = "http://192.168.0.222/hive/carstatus.mc";
+				url = "http://192.168.32.1/hive/carstatus.mc";
 				url += "?id="+cs.getId()+"&speed="+cs.getSpeed()+"&temp="+cs.getTemp()+
 						"&oiltemp="+cs.getOiltemp()+"&rpm="+cs.getRpm();
 				System.out.println(url);
