@@ -32,6 +32,7 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\spring-learned\android"/>
 			<item value="C:\spring-learned"/>
 			<item value="C:\Users\user\Downloads\내web\d06"/>
 			<item value="C:\spring\w02"/>
