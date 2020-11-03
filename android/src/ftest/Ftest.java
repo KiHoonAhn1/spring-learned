@@ -45,7 +45,7 @@ public class Ftest extends HttpServlet {
 
 			// set my firebase server key
 			conn.setRequestProperty("Authorization", "key="
-					+ "AAAAKZu-RQA:APA91bFURAGLOpDQXAeVCpClaIFfW5acirMY7c1oqG9w5J69gYarZXUy6vrkh5ohFuHyHbZXBYKh_2AlfQ63Vfv_dG-0UAHvrepifPNgIwm6L7prnmqeQibM6VkRJS_QULlst85EzAcw" + 
+					+ "AAAA1QPOVlw:APA91bEV9bt3wUWPWsqHx-5v6NEpvE8_pbIX0RY87BnAQzlrmrkMTGsbFR3xnblWvgut9Rj-xQWsyrl3rwn7ags1NEiCdZm0gqu7kCIYZxK0qoz2xUEIPgGq74HAJ_FeVmPhUYVps3rG" + 
 					"");
 
 			// create notification message into JSON format
