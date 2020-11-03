@@ -4353,3 +4353,15 @@ java.net.UnknownHostException: spring.io
 	at org.eclipse.ecf.provider.filetransfer.httpclient45.HttpClientRetrieveFileTransfer$1.performFileTransfer(HttpClientRetrieveFileTransfer.java:988)
 	at org.eclipse.ecf.filetransfer.FileTransferJob.run(FileTransferJob.java:74)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-11-03 09:05:10.790
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.qPifnWAB
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-11-03 09:05:10.802
+!MESSAGE unsubscribing from classpath changes: sts4.classpath.qPifnWAB
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-11-03 09:05:10.809
+!MESSAGE subsribers = {}
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-11-03 09:05:10.817
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.qPifnWAB => OK

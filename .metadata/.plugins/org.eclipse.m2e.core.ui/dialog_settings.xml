@@ -20,6 +20,7 @@
 	</section>
 	<section name="wizardPage">
 		<list key="groupId">
+			<item value="tcpip"/>
 			<item value="hive2"/>
 			<item value="hive"/>
 			<item value="p01"/>
@@ -28,6 +29,7 @@
 		<list key="name">
 		</list>
 		<list key="artifactId">
+			<item value="tcpip"/>
 			<item value="hive2"/>
 			<item value="hive"/>
 			<item value="p01"/>
